@@ -37,5 +37,3 @@ Controls (simple)
   - Space → Next
   - B → Previous
 - Thumbnails: click a thumbnail in the preview area to open that photo in the editor and scroll to top.
-
-If you'd like, I can replace the main `README.md` with this simpler text, or add screenshots showing where to drop files.
