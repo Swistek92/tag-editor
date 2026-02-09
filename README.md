@@ -1,73 +1,41 @@
-# React + TypeScript + Vite
+Quick Guide — Gallery Tags (Non-technical)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+What this program does
 
-Currently, two official plugins are available:
+- Lets you look at photos one by one and add or remove category tags (e.g. portrait, nature).
+- Saves your changes to a local gallery file while you're working.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Where to put image files
 
-## React Compiler
+1. Open the `public/photos/` folder in the project.
+2. Put your images in three subfolders (recommended):
+   - `thumb` — small images used in the thumbnail preview
+   - `medium` — medium size (optional)
+   - `full` — full-size images shown in the main viewer
+3. Make sure the filenames match. Example: for `myphoto.webp` place files as:
+   - `public/photos/thumb/myphoto.webp`
+   - `public/photos/medium/myphoto.webp` (optional)
+   - `public/photos/full/myphoto.webp`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Gallery JSON file
 
-## Expanding the ESLint configuration
+- The app uses `src/Data/gallery.json` to know which images exist and what their tags are.
+- After adding images to `public/photos/`, add a matching entry in `src/Data/gallery.json` with the same filenames (you can copy an existing entry and change paths/ids).
+- While the dev server is running, your tag edits will be saved back into `src/Data/gallery.json`.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Controls (simple)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Buttons:
+  - Previous / Next — move between photos. When you move on, changes are saved.
+  - Tag buttons (right side) — click to add/remove a tag for the current photo. The "all" tag stays.
+- Keyboard shortcuts:
+  - 1 → portrait
+  - 2 → nature
+  - 3 → landscape
+  - 4 → urban
+  - 5 → documentary
+  - Space → Next
+  - B → Previous
+- Thumbnails: click a thumbnail in the preview area to open that photo in the editor and scroll to top.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+If you'd like, I can replace the main `README.md` with this simpler text, or add screenshots showing where to drop files.
